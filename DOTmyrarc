@@ -1,0 +1,25 @@
+class http://broadcast.infomaniak.net/radioclassique-high.mp3 Radio Classique
+cz1 http://netshow.play.cz:8000/radio1.mp3 Radio 1 CZ
+deejay http://mp3.kataweb.it:8000/RadioDeejay Radio Deejay
+jazz http://jazzradio.ice.infomaniak.ch/frequencejazz-high.mp3 Jazz Radio
+mozart http://listen.radionomy.com/radio-mozart Radio Mozart
+nova http://broadcast.infomaniak.net/radionova-high.mp3 Radio Nova
+npr http://npr.ic.llnwd.net/stream/npr_music2.pls All songs 24/7 NPR
+latin http://npr.ic.llnwd.net/stream/npr_music5.pls Alt.Latino NPR
+oui http://broadcast.infomaniak.net:80/ouifm-high.mp3 OUI FM
+tsf http://statslive.infomaniak.ch/playlist/tsfjazz/tsfjazz-high.mp3/playlist.pls TSF Jazz
+culture http://www.tv-radio.com/station/france_culture_mp3/france_culture_mp3-128k.m3u France Culture
+info http://www.tv-radio.com/station/france_info/france_info.m3u France Info
+inter http://www.tv-radio.com/station/france_inter_mp3/france_inter_mp3-128k.m3u France Inter
+mouv http://www.tv-radio.com/station/le_mouv_mp3/le_mouv_mp3-128k.m3u Le Mouv'
+uno mms://mediapolis.rai.it/relinker/relinkerServlet.htm?cont=162834 Rai Radio1
+due mms://mediapolis.rai.it/relinker/relinkerServlet.htm?cont=162063 Rai Radio2
+tre mms://mediapolis.rai.it/relinker/relinkerServlet.htm?cont=162841 Rai Radio3
+fd4 mms://mediapolis.rai.it/relinker/relinkerServlet.htm?cont=173799 Rai FD4
+fd5 mms://mediapolis.rai.it/relinker/relinkerServlet.htm?cont=173832 Rai FD5
+wr6 mms://mediapolis.rai.it/relinker/relinkerServlet.htm?cont=174078 WebRadio WR6
+wr7 mms://mediapolis.rai.it/relinker/relinkerServlet.htm?cont=174083 WebRadio WR7
+wr8 mms://mediapolis.rai.it/relinker/relinkerServlet.htm?cont=174086 WebRadio WR8
+iso mms://mediapolis.rai.it/relinker/relinkerServlet.htm?cont=173875 Isoradio
+rir mms://mediapolis.rai.it/relinker/relinkerServlet.htm?cont=173887 Rai Italia
+rai mms://212.162.68.102/RAI_ITALIA
