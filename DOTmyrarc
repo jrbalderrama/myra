@@ -1,5 +1,5 @@
 class http://broadcast.infomaniak.net/radioclassique-high.mp3 Radio Classique
-cz1 http://netshow.play.cz:8000/radio1.mp3 Radio 1 CZ
+cz1 http://api.play.cz/radio/radio1-192.mp3.m3u Radio 1 CZ
 deejay http://mp3.kataweb.it:8000/RadioDeejay Radio Deejay
 jazz http://jazzradio.ice.infomaniak.ch/frequencejazz-high.mp3 Jazz Radio
 mozart http://listen.radionomy.com/radio-mozart Radio Mozart
