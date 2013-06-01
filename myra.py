@@ -32,7 +32,7 @@ class Radio:
             command = ['cowsay', '-W' ,'13', message]
             execute(command)
             command = ['mplayer', '-really-quiet', '-cache', '256', self.url]
-            if self.url.endswith(('m3u','pls')):
+            if self.url.endswith(('m3u','pls')) or self.url.startswith('mms'): 
                 command.insert(-1,'-playlist')
             execute(command, True)
 
