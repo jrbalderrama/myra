@@ -24,16 +24,15 @@ class Radio:
     def play(self):
         lockfile = FileLock(tempfile.gettempdir() + os.sep + STATIONS_FILE_NAME)        
         if lockfile.is_locked():
-            sys.stderr.write('\tradio player is already on!\n')
+            sys.stderr.write('\tmyra radio player is already on!\n')
             sys.exit(errno.EALREADY)
         with lockfile:
-            message = 'now playing ' + (self.identifier if not self.description
+            message = '\tNow playing ' + (self.identifier if not self.description
                                         else self.description) + '!'
-            command = ['cowsay', '-W' ,'13', message]
-            execute(command)
             command = ['mplayer', '-really-quiet', '-cache', '256', self.url]
             if self.url.endswith(('m3u','pls')) or self.url.startswith('mms'): 
                 command.insert(-1,'-playlist')
+            print(message)
             execute(command, True)
 
 def execute(command, devnull = False):
@@ -64,12 +63,13 @@ def main(argv):
     radios = [line.split(None, 2) for line in lines]
     
     if not argv:
+        print('Usage: myra <radio id>\n')
+        print('\tID\tdescription\n')
         for item in radios: print('\t' + item[0] + '\t' + ''.join(item[2:]).rstrip())
         sys.exit(errno.EAGAIN)
     try:
         dictionary = dict([(column[0], (column[1],''.join(column[2:]).rstrip())) for column in radios])
         radio = Radio(argv[0], dictionary[argv[0]][0], dictionary[argv[0]][1])
-        print 
         radio.play()
     except KeyError:
         sys.stderr.write('\tRadio station ' + argv[0] + ' is not registered!\n')
