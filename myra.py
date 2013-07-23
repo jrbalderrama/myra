@@ -30,8 +30,14 @@ class Radio:
             message = '\tNow playing ' + (self.identifier if not self.description
                                         else self.description) + '!'
             command = ['mplayer', '-really-quiet', '-cache', '256', self.url]
-            if self.url.endswith(('m3u','pls')) or self.url.startswith('mms'): 
+            if self.url.endswith(('m3u','pls','asx')) or self.url.startswith('mms'): 
                 command.insert(-1,'-playlist')
+            elif self.url.startswith('rtmp'):
+                print('work in progress')
+                # TODO support rtmp streams using pipes between rtmpdump and
+                # mplayer
+                # vlc -Idummy URL
+                # command = ['rtmpdump','-v' , '-r', self.url, '|', 'mplayer', '-']
             print(message)
             execute(command, True)
 
@@ -63,16 +69,26 @@ def main(argv):
     radios = [line.split(None, 2) for line in lines]
     
     if not argv:
-        print('Usage: myra <radio id>\n')
+        print('Usage: myra [ID|URL]\n')
         print('\tID\tdescription\n')
         for item in radios: print('\t' + item[0] + '\t' + ''.join(item[2:]).rstrip())
         sys.exit(errno.EAGAIN)
     try:
-        dictionary = dict([(column[0], (column[1],''.join(column[2:]).rstrip())) for column in radios])
-        radio = Radio(argv[0], dictionary[argv[0]][0], dictionary[argv[0]][1])
+        identifier = None
+        url = None
+        description = None
+        if '://' not in argv[0]:
+            dictionary = dict([(column[0], (column[1],''.join(column[2:]).rstrip())) for column in radios])
+            identifier = argv[0]
+            url = dictionary[argv[0]][0]
+            description = dictionary[argv[0]][1]
+        else:
+            identifier="radio from URL"
+            url = argv[0]
+        radio = Radio(identifier, url , description)
         radio.play()
     except KeyError:
-        sys.stderr.write('\tRadio station ' + argv[0] + ' is not registered!\n')
+        sys.stderr.write('\tCannot play ' + argv[0] + '\n')
 
 if __name__ == "__main__":
     main(sys.argv[1:])
