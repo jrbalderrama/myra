@@ -6,6 +6,7 @@ mozart http://listen.radionomy.com/radio-mozart Radio Mozart
 nova http://broadcast.infomaniak.net/radionova-high.mp3 Radio Nova
 npr http://npr.ic.llnwd.net/stream/npr_music2.pls All songs 24/7 NPR
 latin http://npr.ic.llnwd.net/stream/npr_music5.pls Alt.Latino NPR
+libe http://listen.radionomy.com/radio-libe.m3u RadioLibé
 oui http://broadcast.infomaniak.net:80/ouifm-high.mp3 OUI FM
 tsf http://statslive.infomaniak.ch/playlist/tsfjazz/tsfjazz-high.mp3/playlist.pls TSF Jazz
 rfi http://stream.rfi.fr/rfimonde/all/rfimonde-64k.mp3 Radio France Internationale
