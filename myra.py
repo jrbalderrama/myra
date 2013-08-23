@@ -14,7 +14,8 @@ STATIONS_FILE_NAME = ".myrarc"
 # cz1 http://netshow.play.cz:8000/radio1.mp3 Radio 1 CZ
 
 
-class Radio:
+class Radio(object):
+
 
     def __init__(self, identifier, url, description=None):
         self.identifier = identifier
