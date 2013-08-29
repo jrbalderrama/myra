@@ -1,57 +1,50 @@
-#!/usr/bin/env python
-
-from __future__ import print_function
-from __future__ import unicode_literals
+#!/usr/bin/env python3
 
 import errno
 import os
-import tempfile
+import socket
 import subprocess
 import sys
-from lockfile import FileLock
 
 
 STATIONS_FILE_NAME = ".myrarc"
-# .mirarc file format located at $HOME dir
-# ID URL <description>
-# example:
-# cz1 http://netshow.play.cz:8000/radio1.mp3 Radio 1 CZ
+## .mirarc file format located at $HOME dir
+## ID URL <description>
+## example:
+##   cz1 http://netshow.play.cz:8000/radio1.mp3 Radio 1 CZ
 
 
 def play(identifier, url, description=None):
-    file = os.path.join(tempfile.gettempdir(), STATIONS_FILE_NAME)
-    lockfile = FileLock(file)
-    if lockfile.is_locked():
+    locksocket = socket.socket(socket.AF_UNIX, socket.SOCK_DGRAM)
+    try:
+        ## lock program using domain sockets
+        locksocket.bind('\0' + os.path.basename(__file__))
+        message = '\tNow playing ' + \
+                  (identifier if not description else description) + '!'
+        command = ['mplayer', '-really-quiet', '-cache', '256', url]
+        if url.endswith(('m3u', 'pls', 'asx')) or url.startswith('mms'):
+            command.insert(-1, '-playlist')
+        elif url.startswith('rtmp'):
+            print('work in progress')
+            sys.exit(errno.ENOENT)
+            # TODO support rtmp streams using pipes
+            # between rtmpdump and mplayer
+            # vlc -Idummy URL
+            # cmd=['rtmpdump', '-v', '-r', url, '|', 'mplayer', '-']
+        print(message)
+        execute(command, True)
+    except socket.error:
         sys.stderr.write('\tmyra radio player is already on!\n')
         sys.exit(errno.EALREADY)
-    with lockfile:
-        try:
-            message = '\tNow playing ' + \
-                      (identifier if not description else description) + '!'
-            command = ['mplayer', '-really-quiet', '-cache', '256', url]
-            if url.endswith(('m3u', 'pls', 'asx')) or url.startswith('mms'):
-                command.insert(-1, '-playlist')
-            elif url.startswith('rtmp'):
-                print('work in progress')
-                sys.exit(errno.ENOENT)
-                # TODO support rtmp streams using pipes
-                # between rtmpdump and mplayer
-                # vlc -Idummy URL
-                # cmd=['rtmpdump', '-v', '-r', self.url, '|', 'mplayer', '-']
-            print(message)
-            execute(command, True)
-        ## detect stale lock files if keyboard interrupt
-        except KeyboardInterrupt:
-            lockfile.release()
 
 
 def execute(command, devnull=False):
     try:
-        if not devnull:
-            subprocess.call(command)
+        if devnull:
+            with open(os.devnull, 'w') as null:
+                subprocess.call(command, stdout=null, stderr=null)
         else:
-            with open(os.devnull, 'w') as filenull:
-                subprocess.call(command, stdout=filenull, stderr=filenull)
+            subprocess.call(command)
     except KeyboardInterrupt:
         # TODO add pythonic reset
         command = ['reset']
@@ -72,28 +65,30 @@ def main(argv):
     path = os.path.join(os.getenv('HOME'), STATIONS_FILE_NAME)
     lines = read_file(path)
     # radios = map(lambda x: x.split(None, 2), descriptions)
-    radios = [line.decode('utf-8').split(None, 2) for line in lines]
+    radios = [line.split(None, 2) for line in lines]
     if not argv:
         print('Usage: myra [ID|URL]\n')
         print('\tID\tdescription\n')
+        print(radios)
         for item in radios:
             print('\t' + item[0] + '\t' + ''.join(item[2:]).rstrip())
         sys.exit(errno.EAGAIN)
-    parameter = argv[0]
-    try:
-        if '://' not in parameter:
-            dictionary = dict([
-                (column[0], (column[1], ''.join(column[2:]).rstrip()))
-                for column in radios])
-            identifier = parameter
-            url = dictionary[parameter][0]
-            description = dictionary[parameter][1]
-        else:
-            identifier = "radio from URL"
-            url = parameter
-        play(identifier, url, description)
-    except KeyError:
-        sys.stderr.write('\tCannot play ' + parameter + '\n')
+    else:
+        parameter = argv[0]
+        try:
+            if '://' not in parameter:
+                dictionary = dict([
+                    (column[0], (column[1], ''.join(column[2:]).rstrip()))
+                    for column in radios])
+                identifier = parameter
+                url = dictionary[parameter][0]
+                description = dictionary[parameter][1]
+            else:
+                identifier = "radio from URL"
+                url = parameter
+            play(identifier, url, description)
+        except KeyError:
+            sys.stderr.write('\tCannot play ' + parameter + '\n')
 
 
 if __name__ == "__main__":
