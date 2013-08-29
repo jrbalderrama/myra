@@ -25,10 +25,9 @@ def play(identifier, url, description=None):
         if url.endswith(('m3u', 'pls', 'asx')) or url.startswith('mms'):
             command.insert(-1, '-playlist')
         elif url.startswith('rtmp'):
-            print('work in progress')
+            print('the \'rtmp\' protocol is not supported!')
             sys.exit(errno.ENOENT)
-            # TODO support rtmp streams using pipes
-            # between rtmpdump and mplayer
+            # rtmp streams require using pipes between rtmpdump and mplayer
             # vlc -Idummy URL
             # cmd=['rtmpdump', '-v', '-r', url, '|', 'mplayer', '-']
         print(message)
