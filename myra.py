@@ -2,6 +2,7 @@
 
 import errno
 import os
+import signal
 import socket
 import subprocess
 import sys
@@ -25,30 +26,33 @@ def play(identifier, url, description=None):
         if url.endswith(('m3u', 'pls', 'asx')) or url.startswith('mms'):
             command.insert(-1, '-playlist')
         elif url.startswith('rtmp'):
+            # rtmp streams require pipes between rtmpdump and mplayer
+            # rtmpdump -v -r url | mplayer -
+            # vlc -Idummy url
             print('the \'rtmp\' protocol is not supported!')
             sys.exit(errno.ENOENT)
-            # rtmp streams require using pipes between rtmpdump and mplayer
-            # vlc -Idummy URL
-            # cmd=['rtmpdump', '-v', '-r', url, '|', 'mplayer', '-']
         print(message)
-        execute(command, True)
+        execute(command)
     except socket.error:
         sys.stderr.write('\tmyra radio player is already on!\n')
         sys.exit(errno.EALREADY)
 
 
-def execute(command, devnull=False):
+def execute(command):
     try:
-        if devnull:
-            with open(os.devnull, 'w') as null:
-                subprocess.call(command, stdout=null, stderr=null)
-        else:
-            subprocess.call(command)
+        with open(os.devnull, 'w') as null:
+            process = subprocess.Popen(command, stdout=null, stderr=null,
+                                       preexec_fn=os.setsid)
+        process.communicate()
     except KeyboardInterrupt:
-        # TODO add pythonic reset
-        command = ['reset']
-        subprocess.call(command)
-        sys.exit(errno.EINTR)
+        # pythonic reset instead of os.system('reset')
+        # this avoid the terminal hangs after C-c
+        # ref: stackoverflow #6488275
+        process.send_signal(signal.SIGINT)
+        ## instead of process.terminate() killpg will finish execution
+        ## of all process' children (works with preexec_fn=os.setsid)
+        # ref: stackoverflow #9117566
+        os.killpg(process.pid, signal.SIGTERM)
     except OSError:
         sys.stderr.write('\tcommand \'' + command[0] + '\' not found!\n')
         sys.exit(errno.ENOENT)
