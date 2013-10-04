@@ -26,10 +26,10 @@ def play(identifier, url, description=None):
         if url.endswith(('m3u', 'pls', 'asx')) or url.startswith('mms'):
             command.insert(-1, '-playlist')
         elif url.startswith('rtmp'):
-            # rtmp streams require pipes between rtmpdump and mplayer
-            # rtmpdump -v -r url | mplayer -
-            # vlc -Idummy url
-            print('the \'rtmp\' protocol is not supported!')
+            ## rtmp streams require pipes between rtmpdump and mplayer:
+            ## rtmpdump -v -r url | mplayer -
+            ## alternatively: vlc -Idummy url
+            sys.stderr.write("\tthe 'rtmp' protocol is not supported!\n")
             sys.exit(errno.ENOENT)
         print(message)
         execute(command)
@@ -45,13 +45,13 @@ def execute(command):
                                        preexec_fn=os.setsid)
         process.communicate()
     except KeyboardInterrupt:
-        # pythonic reset instead of os.system('reset')
-        # this avoid the terminal hangs after C-c
-        # ref: stackoverflow #6488275
+        ## pythonic reset instead of os.system('reset')
+        ## this avoid the terminal hangs after C-c
+        ## ref: stackoverflow #6488275
         process.send_signal(signal.SIGINT)
         ## instead of process.terminate() killpg will finish execution
         ## of all process' children (works with preexec_fn=os.setsid)
-        # ref: stackoverflow #9117566
+        ## ref: stackoverflow #9117566
         os.killpg(process.pid, signal.SIGTERM)
     except OSError:
         sys.stderr.write('\tcommand \'' + command[0] + '\' not found!\n')
@@ -72,17 +72,17 @@ def main(argv):
     if not argv:
         print('Usage: myra [ID|URL]\n')
         print('\tID\tdescription\n')
-        print(radios)
         for item in radios:
             print('\t' + item[0] + '\t' + ''.join(item[2:]).rstrip())
         sys.exit(errno.EAGAIN)
     else:
         parameter = argv[0]
+        description = None
         try:
             if '://' not in parameter:
-                dictionary = dict([
-                    (column[0], (column[1], ''.join(column[2:]).rstrip()))
-                    for column in radios])
+                dictionary = dict(
+                    ((column[0], (column[1], ''.join(column[2:]).rstrip()))
+                     for column in radios))
                 identifier = parameter
                 url = dictionary[parameter][0]
                 description = dictionary[parameter][1]
