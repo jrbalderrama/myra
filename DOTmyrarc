@@ -4,17 +4,22 @@ deejay http://mp3.kataweb.it:8000/RadioDeejay Radio Deejay
 jazz http://jazzradio.ice.infomaniak.ch/frequencejazz-high.mp3 Jazz Radio
 mozart http://listen.radionomy.com/radio-mozart Radio Mozart
 nova http://broadcast.infomaniak.net/radionova-high.mp3 Radio Nova
-npr http://npr.ic.llnwd.net/stream/npr_music2.pls All songs 24/7 NPR
-latin http://npr.ic.llnwd.net/stream/npr_music5.pls Alt.Latino NPR
 libe http://listen.radionomy.com/radio-libe.m3u RadioLibé
 oui http://broadcast.infomaniak.net:80/ouifm-high.mp3 OUI FM
-tsf http://statslive.infomaniak.ch/playlist/tsfjazz/tsfjazz-high.mp3/playlist.pls TSF Jazz
+pri http://pri-ice.streamguys.biz/pri1 Public Radio International
 rfi http://stream.rfi.fr/rfimonde/all/rfimonde-64k.mp3 Radio France Internationale
+rpr http://www.radiopopolareroma.it/files/rpr.m3u Radio Popolare Roma
+tsf http://statslive.infomaniak.ch/playlist/tsfjazz/tsfjazz-high.mp3/playlist.pls TSF Jazz
+npr http://www.npr.org/streams/mp3/nprlive24.pls NPR Program Stream
+latino http://npr.ic.llnwd.net/stream/npr_music5.pls NPR Alt.Latino
+songs http://npr.ic.llnwd.net/stream/npr_music2.pls NPR All songs 24/7
+nyca http://www.wnyc.org/stream/wnyc-am820/mp3.pls WNYC AM Radio
+nyfm http://www.wnyc.org/stream/wnyc-fm939/mp3.pls WNYC FM Radio
 inter http://www.tv-radio.com/station/france_inter_mp3/france_inter_mp3-128k.m3u France Inter
 info http://www.tv-radio.com/station/france_info/france_info.m3u France Info
 culture http://www.tv-radio.com/station/france_culture_mp3/france_culture_mp3-128k.m3u France Culture
 musique http://www.tv-radio.com/station/france_musique_mp3/france_musique_mp3-128k.m3u France Musique
-bleu http://www.tv-radio.com/station/france_bleu_ile-de-france_mp3/france_bleu_ile-de-france_mp3-128k.m3u France Bleu 
+bleu http://www.tv-radio.com/station/france_bleu_ile-de-france_mp3/france_bleu_ile-de-france_mp3-128k.m3u France Bleu
 fip http://www.tv-radio.com/station/fip_mp3/fip_mp3-128k.m3u FIP
 mouv http://www.tv-radio.com/station/le_mouv_mp3/le_mouv_mp3-128k.m3u Le Mouv'
 uno mms://mediapolis.rai.it/relinker/relinkerServlet.htm?cont=162834 Rai Radio1
@@ -35,7 +40,7 @@ four http://bbc.co.uk/radio/listen/live/r4.asx BBC Radio 4
 4xtra http://bbc.co.uk/radio/listen/live/r7.asx BBC Radio 4Xtra
 five http://bbc.co.uk/radio/listen/live/r5l.asx BBC Radio 5 live
 5xtra http://bbc.co.uk/radio/listen/live/r5lsp.asx BBC Radio 5 live sports extra
-six http://bbc.co.uk/radio/listen/live/r6.asx BBC Radio 6 Music             
+six http://bbc.co.uk/radio/listen/live/r6.asx BBC Radio 6 Music
 bbc http://www.bbc.co.uk/worldservice/meta/live/nb/eieuk_au_nb.asx BBC World Service
 london http://bbc.co.uk/radio/listen/live/bbclondon.asx BBC London
 nat http://www.abc.net.au/res/streaming/audio/windows/radio_national.asx ABC Radio National
