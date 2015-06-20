@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import errno
 import os
@@ -9,17 +9,24 @@ import sys
 
 
 STATIONS_FILE_NAME = ".myrarc"
-## .mirarc file format located at $HOME dir
-## ID URL <description>
-## example:
-##   cz1 http://netshow.play.cz:8000/radio1.mp3 Radio 1 CZ
+# .mirarc file format located at $HOME dir
+# ID URL <description>
+# example:
+#   cz1 http://netshow.play.cz:8000/radio1.mp3 Radio 1 CZ
 
 
-def play(identifier, url, description=None):
-    locksocket = socket.socket(socket.AF_UNIX, socket.SOCK_DGRAM)
+def play(identifier, url, description=None, port=22222):
+    """Play a radio.
+
+    Play is a blocking action using sockets. It is not implemented with POSIX
+    Local IPC Sockets (Unix domain sockets) because some OS implementations do
+    not acknowledge the use of SO_REUSEADDR in case of AF_UNIX socket.
+    """
+    locksocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    locksocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     try:
-        ## lock program using domain sockets
-        locksocket.bind('\0' + os.path.basename(__file__))
+        locksocket.bind(('localhost', port))
+        locksocket.listen(0)
         message = '\tNow playing ' + \
                   (identifier if not description else description) + '!'
         command = ['mplayer', '-really-quiet', '-cache', '256', url]
@@ -29,36 +36,48 @@ def play(identifier, url, description=None):
             # rtmp streams require pipes between rtmpdump and mplayer
             # rtmpdump -v -r url | mplayer -
             # vlc -Idummy url
-            print('the \'rtmp\' protocol is not supported!')
+            print('the \'rtmp\' protocol is not supported!', file=sys.stderr)
             sys.exit(errno.ENOENT)
         print(message)
         execute(command)
-    except socket.error:
-        sys.stderr.write('\tmyra radio player is already on!\n')
+    except OSError as error:
+        if error.errno == 48:
+            print('\tmyra radio player is already on!\n', file=sys.stderr)
+        else:
+            print(error, file= sys.stderr)
         sys.exit(errno.EALREADY)
+    # else:
+    #     #locksocket.shutdown(socket.SHUT_RDWR)
+    #     locksocket.close()
+    #     #sys.exit(os.EX_OK)
 
 
 def execute(command):
+    """Execute a system command as a sub-process.
+    """
     try:
         with open(os.devnull, 'w') as null:
-            process = subprocess.Popen(command, stdout=null, stderr=null,
+            process = subprocess.Popen(command,
+                                       stdout=null,
+                                       stderr=null,
                                        preexec_fn=os.setsid)
         process.communicate()
     except KeyboardInterrupt:
-        # pythonic reset instead of os.system('reset')
-        # this avoid the terminal hangs after C-c
-        # ref: stackoverflow #6488275
+        # use process reset instead of the system call 'reset' to avoid the
+        # terminal to hang after C-c. this avoid the terminal hangs after
+        # killing the process with 'C-c' ref: stackoverflow #6488275
         process.send_signal(signal.SIGINT)
-        ## instead of process.terminate() killpg will finish execution
-        ## of all process' children (works with preexec_fn=os.setsid)
-        # ref: stackoverflow #9117566
+        # instead of 'process.terminate()' use os.killpg() to finish the
+        # execution of all process' children. it works with the argument
+        # preexec_fn=os.setsid) ref: stackoverflow #9117566
         os.killpg(process.pid, signal.SIGTERM)
-    except OSError:
-        sys.stderr.write('\tcommand \'' + command[0] + '\' not found!\n')
-        sys.exit(errno.ENOENT)
+    except OSError as error:
+        print(error, file=sys.stderr)
 
 
 def read_file(path):
+    """Read a text file.
+    """
     with open(path) as _file:
         _list = _file.readlines()
     return _list
@@ -72,7 +91,6 @@ def main(argv):
     if not argv:
         print('Usage: myra [ID|URL]\n')
         print('\tID\tdescription\n')
-        print(radios)
         for item in radios:
             print('\t' + item[0] + '\t' + ''.join(item[2:]).rstrip())
         sys.exit(errno.EAGAIN)
@@ -91,7 +109,7 @@ def main(argv):
                 url = parameter
             play(identifier, url, description)
         except KeyError:
-            sys.stderr.write('\tCannot play ' + parameter + '\n')
+            print('\tCannot play ' + parameter + '\n', sys.stderr)
 
 
 if __name__ == "__main__":

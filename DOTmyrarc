@@ -9,8 +9,10 @@ tsf http://statslive.infomaniak.ch/playlist/tsfjazz/tsfjazz-high.mp3/playlist.pl
 rfi http://stream.rfi.fr/rfimonde/all/rfimonde-64k.mp3 Radio France Internationale
 pri http://pri-ice.streamguys.biz/pri1 Public Radio International
 wnyc http://www.wnyc.org/stream/wnyc-fm939/mp3.pls WNYC 93.9 FM New York
-npr   http://npr.ic.llnwd.net/stream/npr_music2.pls All songs 24/7 NPR
-latin http://npr.ic.llnwd.net/stream/npr_music5.pls Alt.Latino NPR
+npr    http://nprdmp.ic.llnwd.net/stream/nprdmp_live21_mp3 NPR All songs 24/7
+latin  http://nprdmp.ic.llnwd.net/stream/nprdmp_live22_mp3 NPR Alt.Latino
+jazz24 http://icy1.abacast.com/kplu-jazz24aac-64 Jazz24
+kexp   http://live-aacplus-64.kexp.org/kexp64.aac KEXP
 oui  http://broadcast.infomaniak.net/ouifm-high.mp3 OUI FM
 ouia http://broadcast.infomaniak.net/ouifm2.mp3 OUI FM Alternative
 ouic http://broadcast.infomaniak.net/ouifm3.mp3 OUI FM Collector
