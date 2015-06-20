@@ -1,49 +1,66 @@
-class http://broadcast.infomaniak.net/radioclassique-high.mp3 Radio Classique
+classique http://broadcast.infomaniak.net/radioclassique-high.mp3 Radio Classique
 cz1 http://api.play.cz/radio/radio1-192.mp3.m3u Radio 1 CZ
 deejay http://mp3.kataweb.it:8000/RadioDeejay Radio Deejay
 jazz http://jazzradio.ice.infomaniak.ch/frequencejazz-high.mp3 Jazz Radio
 mozart http://listen.radionomy.com/radio-mozart Radio Mozart
 nova http://broadcast.infomaniak.net/radionova-high.mp3 Radio Nova
-npr http://npr.ic.llnwd.net/stream/npr_music2.pls All songs 24/7 NPR
-latin http://npr.ic.llnwd.net/stream/npr_music5.pls Alt.Latino NPR
-libe http://listen.radionomy.com/radio-libe.m3u RadioLibé
-oui http://broadcast.infomaniak.net:80/ouifm-high.mp3 OUI FM
+monocle http://radio.monocle.com/live Monocle radio
 tsf http://statslive.infomaniak.ch/playlist/tsfjazz/tsfjazz-high.mp3/playlist.pls TSF Jazz
 rfi http://stream.rfi.fr/rfimonde/all/rfimonde-64k.mp3 Radio France Internationale
-inter http://www.tv-radio.com/station/france_inter_mp3/france_inter_mp3-128k.m3u France Inter
-info http://www.tv-radio.com/station/france_info/france_info.m3u France Info
+pri http://pri-ice.streamguys.biz/pri1 Public Radio International
+wnyc http://www.wnyc.org/stream/wnyc-fm939/mp3.pls WNYC 93.9 FM New York
+npr   http://npr.ic.llnwd.net/stream/npr_music2.pls All songs 24/7 NPR
+latin http://npr.ic.llnwd.net/stream/npr_music5.pls Alt.Latino NPR
+oui  http://broadcast.infomaniak.net/ouifm-high.mp3 OUI FM
+ouia http://broadcast.infomaniak.net/ouifm2.mp3 OUI FM Alternative
+ouic http://broadcast.infomaniak.net/ouifm3.mp3 OUI FM Collector
+ouib http://broadcast.infomaniak.net/ouifm4.mp3 OUI FM Blues
+ouii http://broadcast.infomaniak.net/ouifm5.mp3 OUI FM Indie Rock
+inter   http://www.tv-radio.com/station/france_inter_mp3/france_inter_mp3-128k.m3u France Inter
+info    http://www.tv-radio.com/station/france_info/france_info.m3u France Info
 culture http://www.tv-radio.com/station/france_culture_mp3/france_culture_mp3-128k.m3u France Culture
 musique http://www.tv-radio.com/station/france_musique_mp3/france_musique_mp3-128k.m3u France Musique
-bleu http://www.tv-radio.com/station/france_bleu_ile-de-france_mp3/france_bleu_ile-de-france_mp3-128k.m3u France Bleu 
-fip http://www.tv-radio.com/station/fip_mp3/fip_mp3-128k.m3u FIP
-mouv http://www.tv-radio.com/station/le_mouv_mp3/le_mouv_mp3-128k.m3u Le Mouv'
-uno mms://mediapolis.rai.it/relinker/relinkerServlet.htm?cont=162834 Rai Radio1
-due mms://mediapolis.rai.it/relinker/relinkerServlet.htm?cont=162063 Rai Radio2
-tre mms://mediapolis.rai.it/relinker/relinkerServlet.htm?cont=162841 Rai Radio3
-fd4 mms://mediapolis.rai.it/relinker/relinkerServlet.htm?cont=173799 Rai FD4
-fd5 mms://mediapolis.rai.it/relinker/relinkerServlet.htm?cont=173832 Rai FD5
-wr6 mms://mediapolis.rai.it/relinker/relinkerServlet.htm?cont=174078 WebRadio WR6
-wr7 mms://mediapolis.rai.it/relinker/relinkerServlet.htm?cont=174083 WebRadio WR7
-wr8 mms://mediapolis.rai.it/relinker/relinkerServlet.htm?cont=174086 WebRadio WR8
-rir mms://mediapolis.rai.it/relinker/relinkerServlet.htm?cont=173887 Rai Italia
-rai mms://212.162.68.102/RAI_ITALIA
-one http://bbc.co.uk/radio/listen/live/r1.asx BBC Radio 1
-1xtra http://bbc.co.uk/radio/listen/live/r1x.asx BBC Radio 1Xtra
-two http://bbc.co.uk/radio/listen/live/r2.asx BBC Radio 2
-three http://bbc.co.uk/radio/listen/live/r3.asx BBC Radio 3
-four http://bbc.co.uk/radio/listen/live/r4.asx BBC Radio 4
-4xtra http://bbc.co.uk/radio/listen/live/r7.asx BBC Radio 4Xtra
-five http://bbc.co.uk/radio/listen/live/r5l.asx BBC Radio 5 live
-5xtra http://bbc.co.uk/radio/listen/live/r5lsp.asx BBC Radio 5 live sports extra
-six http://bbc.co.uk/radio/listen/live/r6.asx BBC Radio 6 Music             
-bbc http://www.bbc.co.uk/worldservice/meta/live/nb/eieuk_au_nb.asx BBC World Service
-london http://bbc.co.uk/radio/listen/live/bbclondon.asx BBC London
-nat http://www.abc.net.au/res/streaming/audio/windows/radio_national.asx ABC Radio National
-news http://www.abc.net.au/res/streaming/audio/windows/news_radio.asx ABC News Radio
-classic http://www.abc.net.au/res/streaming/audio/windows/classic_fm.asx ABC Classic FM
-dig http://www.abc.net.au/res/streaming/audio/windows/dig_music.asx ABC Dig Music
-abcj http://www.abc.net.au/res/streaming/audio/windows/abc_jazz.asx ABC Jazz
-country http://www.abc.net.au/res/streaming/audio/windows/abc_country.asx ABC Country
-jjj http://www.abc.net.au/res/streaming/audio/windows/triple_j.asx triple j
-3ju http://www.abc.net.au/res/streaming/audio/windows/unearthed.asx triple j Unearthed
-vic http://www.abc.net.au/res/streaming/audio/windows/local_melbourne.asx ABC Melbourne
+fip     http://www.tv-radio.com/station/fip_mp3/fip_mp3-128k.m3u FIP
+mouv    http://www.tv-radio.com/station/le_mouv_mp3/le_mouv_mp3-128k.m3u Le Mouv'
+rai  http://icestreaming.rai.it/8.mp3 Rai Italia
+rai1 http://icestreaming.rai.it/1.mp3 Rai Radio1
+rai2 http://icestreaming.rai.it/2.mp3 Rai Radio2
+rai3 http://icestreaming.rai.it/3.mp3 Rai Radio3
+fd4  http://icestreaming.rai.it/4.mp3 Rai FD4 Leggera
+fd5  http://icestreaming.rai.it/5.mp3 Rai FD5 Auditorium
+wr6  http://icestreaming.rai.it/9.mp3 WebRadio WR6
+wr7  http://icestreaming.rai.it/10.mp3 WebRadio WR7
+wr8  http://icestreaming.rai.it/11.mp3 WebRadio WR8
+raiiso http://icestreaming.rai.it/6.mp3 Isoradio
+raigrp http://icestreaming.rai.it/7.mp3 GR Parlamento
+raibz  http://radiobzlive.rai.it/RAIBZ_Livestream
+bbc   http://bbcwssc.ic.llnwd.net/stream/bbcwssc_mp1_ws-eieuk BBC World Service
+london http://bbcmedia.ic.llnwd.net/stream/bbcmedia_lrldn_mf_p BBC London
+bbc1  http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio1_mf_p BBC Radio 1
+bbc1x http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio1xtra_mf_p BBC Radio 1Xtra
+bbc2  http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio2_mf_p BBC Radio 2
+bbc3  http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio3_mf_p BBC Radio 3
+bbc4  http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio4fm_mf_p BBC Radio 4
+bbc4x http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio4extra_mf_p BBC Radio 4Xtra
+bbc5  http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio5live_mf_p BBC Radio 5 live
+bbc5x http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio5extra_mf_p BBC Radio 5 live sports extra
+bbc6  http://bbcmedia.ic.llnwd.net/stream/bbcmedia_6music_mf_p BBC Radio 6 Music
+def http://www.dradio.de/streaming/dlf.m3u Deutschlandfunk
+dek http://www.dradio.de/streaming/dkultur.m3u Deutschlandradio Kultur
+dew http://www.dradio.de/streaming/dradiowissen.m3u DRadio Wissen
+ded http://www.dradio.de/streaming/dplus.m3u Dokumente und Debatten
+defhq http://www.dradio.de/streaming/dlf_hq_ogg.m3u
+dekhq http://www.dradio.de/streaming/dkultur_hq_ogg.m3u
+dewhq http://www.dradio.de/streaming/dradiowissen_hq_ogg.m3
+abc   http://www.abc.net.au/res/streaming/audio/mp3/radio_national.pls ABC RN
+melbourne http://www.abc.net.au/res/streaming/audio/mp3/local_melbourne.pls 774 ABC Melbourne
+abccl http://www.abc.net.au/res/streaming/audio/mp3/classic_fm.pls ABC Classic FM
+abcc2 http://www.abc.net.au/res/streaming/audio/mp3/classic_two.pls ABC Classic 2
+abcnr http://www.abc.net.au/res/streaming/audio/mp3/news_radio.pls ABC NewsRadio
+abctj http://www.abc.net.au/res/streaming/audio/mp3/triplej.pls triple j
+abcju http://www.abc.net.au/res/streaming/audio/mp3/unearthed.pls triple j Unearthed
+abcdj http://www.abc.net.au/res/streaming/audio/mp3/dig_music.pls Double J
+abcjz http://www.abc.net.au/res/streaming/audio/mp3/abc_jazz.pls ABC Jazz
+abcct http://www.abc.net.au/res/streaming/audio/mp3/abc_country.pls ABC Country
+abcex http://www.abc.net.au/res/streaming/audio/mp3/extra.pls ABC Extra
+abcgs http://www.abc.net.au/res/streaming/audio/mp3/grandstand.pls ABC Grandstand
