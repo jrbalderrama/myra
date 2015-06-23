@@ -18,12 +18,12 @@ ouia http://broadcast.infomaniak.net/ouifm2.mp3 OUI FM Alternative
 ouic http://broadcast.infomaniak.net/ouifm3.mp3 OUI FM Collector
 ouib http://broadcast.infomaniak.net/ouifm4.mp3 OUI FM Blues
 ouii http://broadcast.infomaniak.net/ouifm5.mp3 OUI FM Indie Rock
-info    http://mp3.live.tv-radio.com/franceinfo/all/franceinfo.mp3 France Info
-inter   http://mp3.live.tv-radio.com/franceinter/all/franceinterhautdebit.mp3 France Inter
-culture http://mp3.live.tv-radio.com/franceculture/all/franceculturehautdebit.mp3 France Culture
-musique http://mp3.live.tv-radio.com/francemusique/all/francemusiquehautdebit.mp3 France Musique
-mouv    http://mp3.live.tv-radio.com/lemouv/all/lemouvhautdebit.mp3 Le Mouv'
-fip     http://mp3.live.tv-radio.com/fip/all/fiphautdebit.mp3 FIP
+info    http://audio.scdn.arkena.com/11006/franceinfo-midfi128.mp3 France Info
+inter   http://audio.scdn.arkena.com/11008/franceinter-midfi128.mp3 France Inter
+culture http://audio.scdn.arkena.com/11010/franceculture-midfi128.mp3 France Culture
+musique http://audio.scdn.arkena.com/11012/francemusique-midfi128.mp3 France Musique
+mouv    http://audio.scdn.arkena.com/11014/mouv-midfi128.mp3 Le Mouv'
+fip     http://audio.scdn.arkena.com/11016/fip-midfi128.mp3 FIP
 rai  http://icestreaming.rai.it/8.mp3 Rai Italia
 rai1 http://icestreaming.rai.it/1.mp3 Rai Radio1
 rai2 http://icestreaming.rai.it/2.mp3 Rai Radio2
